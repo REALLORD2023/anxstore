@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ANX CLOUD STORE</title>
+  <title>M4X FAMILY FREE FIRE</title>
+
   <style>
     * { box-sizing: border-box; }
     body {
@@ -12,148 +13,310 @@
       background: black; color: white;
       overflow-x: hidden;
     }
+
+    /* === ANIMASI INTRO === */
+    #intro-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
+      animation: fadeOut 1s ease forwards;
+      animation-delay: 4s;
+    }
+
+    #intro-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #intro-logo {
+      width: 200px;
+      filter: drop-shadow(0 0 20px #00ffff) drop-shadow(0 0 40px #ff00ff);
+      animation: pulse 2s infinite alternate;
+    }
+
+    #intro-text {
+      margin-top: 15px;
+      font-size: 1.5rem;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff, 0 0 30px #ff00ff;
+      font-weight: bold;
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); opacity: 0.8; }
+      to { transform: scale(1.2); opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    @keyframes flicker {
+      0%,18%,22%,25%,53%,57%,100% { opacity: 1; }
+      20%,24%,55% { opacity: 0.8; }
+    }
+
+    /* === HEADER === */
     header { padding: 20px 0; }
+
     .logo-nav-container {
       display: flex; justify-content: space-between;
       align-items: center; max-width: 1200px;
       margin: auto; padding: 0 20px; flex-wrap: wrap;
     }
-    .logo-container { display: flex; align-items: center; gap: 12px; }
-    .logo { max-width: 50px; }
-    .site-name {
-      font-size: 1.6rem; font-weight: bold;
-      color: white; text-decoration: none;
+
+    .logo-container {
+      display: flex; align-items: center; gap: 12px;
+      filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 25px #ff00ff);
+      animation: glowLogo 3s infinite alternate;
     }
+
+    .logo { max-width: 60px; }
+
+    @keyframes glowLogo {
+      from { filter: drop-shadow(0 0 5px #00ffff) drop-shadow(0 0 15px #ff00ff); }
+      to { filter: drop-shadow(0 0 25px #00ffff) drop-shadow(0 0 50px #ff00ff); }
+    }
+
+    .site-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #00ffff;
+      text-decoration: none;
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #ff00ff;
+      animation: textPulse 2s infinite alternate;
+    }
+
+    @keyframes textPulse {
+      from { text-shadow: 0 0 5px #00ffff, 0 0 15px #ff00ff; }
+      to { text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
+    }
+
     nav ul {
       list-style: none; display: flex; gap: 20px;
       padding: 0; margin: 0; flex-wrap: wrap;
     }
+
     nav ul li a {
       color: white; text-decoration: none;
       font-weight: bold; padding: 10px 16px;
       border-radius: 8px;
     }
-    nav ul li a:hover {
-      background: rgba(255,255,255,0.15);
-    }
+
+    nav ul li a:hover { background: rgba(255,255,255,0.15); }
+
+    /* === BACKGROUND === */
     .background-slider {
       position: fixed; top: 0; left: 0;
       width: 100%; height: 100%;
       background: url('assets/img/public.gif') no-repeat center center fixed;
       background-size: cover; z-index: -2;
     }
+
     .overlay {
       position: fixed; top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6); z-index: -1;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
     }
+
+    /* === BANNER === */
     .ads-slider {
       text-align: center; padding: 10px 0;
+      animation: bannerPulse 4s infinite alternate;
     }
+
     .ads-slider img {
-      width: 100%; max-height: 200px;
+      width: 100%; max-height: 220px;
       object-fit: cover; border-radius: 10px;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
+      transition: transform 0.5s ease;
     }
-    .flash-sale {
-      text-align: center;
-      margin: 20px 0;
+
+    .ads-slider img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px #00ffff, 0 0 60px #ff00ff;
     }
-    .flash-sale img {
-      width: 250px;
-      max-width: 90%;
-      animation: pulse 1.5s infinite;
+
+    @keyframes bannerPulse {
+      from { filter: drop-shadow(0 0 10px #00ffff); }
+      to { filter: drop-shadow(0 0 30px #ff00ff); }
     }
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.8; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .flash-sale-glow {
-      position: relative;
-      animation: glow 2s infinite alternate;
-    }
-    @keyframes glow {
-      0% {
-        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-      }
-      100% {
-        box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-      }
-    }
-    .product-scroll-container {
-      display: flex; overflow-x: auto;
+
+    /* === RULES & STRUKTUR === */
+    .rules-structure-container {
+      display: flex; flex-wrap: wrap; justify-content: center;
       gap: 20px; padding: 30px 20px;
-      scroll-snap-type: x mandatory;
     }
-    .product {
-      flex: 0 0 auto;
-      background-color: rgba(0,0,0,0.3);
+
+    .rules-section, .structure-section {
+      flex: 1 1 350px;
+      background-color: rgba(255,255,255,0.05);
       border-radius: 15px;
-      padding: 15px;
-      width: 280px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.3);
-      scroll-snap-align: start;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.3);
     }
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-      max-height: 160px;
-      object-fit: contain;
+
+    .neon-glow {
+      text-align: center;
+      color: #00ffff;
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff,
+                   0 0 40px #ff00ff, 0 0 80px #ff00ff;
+      animation: glowPulse 2s infinite alternate;
     }
-    .package-scroll {
-      display: flex; overflow-x: auto;
-      gap: 15px; padding-top: 10px;
+
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 8px #00ffff, 0 0 20px #00ffff, 0 0 30px #ff00ff; }
+      to { text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 80px #ff00ff; }
     }
-    .package-card {
-      flex: 0 0 240px;
-      background: rgba(255,255,255,0.05);
-      padding: 15px; border-radius: 10px;
-      position: relative;
-    }
-    .discount-badge {
-      background-color: red;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 0.75rem;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .package-card h3 { margin: 0; color: #00ffff; }
-    .package-card p { margin: 5px 0 10px 0; }
+
     .wa-btn {
       display: inline-block;
-      padding: 8px 12px;
-      background: #25D366; color: white;
-      border-radius: 5px; text-decoration: none;
-      font-size: 0.85rem;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #ff0000;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px #ff0000;
+      transition: all 0.3s ease-in-out;
     }
+
+    .wa-btn:hover {
+      transform: scale(1.1);
+      background: #ff1a1a;
+      box-shadow: 0 0 25px #ff0000, 0 0 50px #ff1a1a;
+    }
+
+    /* === TOP POINT === */
+    .top-point-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.player-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.player-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
+}
+
+.player-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+}
+
+.player-card span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+    .top-point-section {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .top-point-section ol {
+      list-style: none;
+      padding: 0;
+    }
+
+    .top-point-section li {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .gold {
+      color: gold;
+      text-shadow: 0 0 10px gold, 0 0 20px #ffea00, 0 0 40px #fff799;
+      animation: glowGold 2s infinite alternate;
+    }
+    .silver {
+      color: #c0c0c0;
+      text-shadow: 0 0 10px #c0c0c0, 0 0 20px #e0e0e0, 0 0 40px white;
+      animation: glowSilver 2s infinite alternate;
+    }
+    .bronze {
+      color: #cd7f32;
+      text-shadow: 0 0 10px #cd7f32, 0 0 20px #ff9e4a, 0 0 40px #ffc77a;
+      animation: glowBronze 2s infinite alternate;
+    }
+
+    @keyframes glowGold {
+      from { text-shadow: 0 0 8px gold; }
+      to { text-shadow: 0 0 25px #fff799, 0 0 45px #ffea00; }
+    }
+    @keyframes glowSilver {
+      from { text-shadow: 0 0 8px #e0e0e0; }
+      to { text-shadow: 0 0 25px white, 0 0 45px #bfbfbf; }
+    }
+    @keyframes glowBronze {
+      from { text-shadow: 0 0 8px #cd7f32; }
+      to { text-shadow: 0 0 25px #ff9e4a, 0 0 45px #ffc77a; }
+    }
+
+    /* === FOOTER === */
     footer {
       text-align: center;
       padding: 20px 10px;
       background: rgba(0, 0, 0, 0.3);
     }
+
     .socials img {
-      width: 30px; margin: 0 10px;
+      width: 30px;
+      margin: 0 10px;
+      transition: transform 0.3s, filter 0.3s;
     }
+
+    .socials img:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 8px #00ffff);
+    }
+
     .berita-terbaru h3 { color: #00ffff; }
-    .berita-terbaru ul {
-      list-style: none; padding: 0;
+    .berita-terbaru ul { list-style: none; padding: 0; }
+    .berita-terbaru ul li a { color: white; text-decoration: none; }
+    .berita-terbaru ul li a:hover { text-decoration: underline; }
+
+    .copyright {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 0 0 10px #00ffff;
     }
-    .berita-terbaru ul li a {
-      color: white; text-decoration: none;
-    }
-    .berita-terbaru ul li a:hover {
-      text-decoration: underline;
-    }
-    footer p { color: #00ff00; }
 
     @media (max-width: 768px) {
       .logo-nav-container { flex-direction: column; gap: 10px; }
@@ -162,7 +325,17 @@
     }
   </style>
 </head>
+
 <body>
+  <!-- INTRO -->
+  <div id="intro-screen">
+    <img id="intro-logo" src="assets/img/logom4x.png" alt="M4X Logo">
+    <div id="intro-text">Loading sebentar....</div>
+    <audio autoplay>
+      <source src="assets/music/ff-intro.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
   <audio autoplay loop hidden>
     <source src="assets/music/musik.mp3" type="audio/mpeg">
   </audio>
@@ -173,202 +346,111 @@
   <header>
     <div class="logo-nav-container">
       <div class="logo-container">
-        <img src="assets/img/anxbar.png" alt="Logo" class="logo">
-        <a href="#" class="site-name">ANX CLOUD STORE</a>
+        <img src="assets/img/logom4x.png" alt="Logo" class="logo">
+        <a href="#" class="site-name">M4XIMAL FAMILY</a>
       </div>
       <nav>
         <ul>
-          <li><a href="#vps">VPS</a></li>
-          <li><a href="#rdp">RDP</a></li>
-          <li><a href="#game">HOSTING</a></li>
+          <li><a href="#MAXIMAL">🔥Semangat membara menuju kejayaan🔥</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <div class="ads-slider">
-    <img src="assets/img/ber.jpg" alt="Banner">
+    <img src="assets/img/20.jpg" alt="Banner">
   </div>
 
+  <section class="rules-structure-container">
+    <div class="rules-section">
+      <h2 class="neon-glow">❗ RULES KOMUNITAS ❗</h2>
+      <h3>IN GAME</h3>
+      <p>🔹 Wajib on mic</p>
+      <p>🔹 Toxic sewajarnya</p>
+      <p>🔹 Tidak menggunakan program ilegal</p>
+      <p>🔹 Kerja sama Team nomor 1 (satu)</p>
+      <p>🔹 Berikan alasan jika di invite tidak masuk</p>
+      <p>🔹 Berikan alasan jika tidak bisa on mic</p>
+      <p>🔹 Tidak baper sesama member</p>
+      <p>🔹 Berusia 17 tahun +</p>
 
+      <h3>IN GROUP</h3>
+      <p>🔹 Sopan kepada sesama</p>
+      <p>🔹 Wajib CN (CHANGE NAME)</p>
+      <p>🔹 Wajib masuk grup WhatsApp</p>
+      <p>🔹 Loyal tidak kutu loncat</p>
+      <p>🔹 Tidak egois sesama</p>
+      <p>🔹 Berusia 17 tahun +</p>
+      <p>🔹 Tidak menebar Link (porno/fishing/atau link lainnya)</p>
 
-  <!-- Scroll Produk dan isi produk Anda seperti biasa di sini... -->
-  <!-- Misalnya: -->
-  <div class="product-scroll-container">
-    <!-- VPS -->
-    <section class="product" id="vps">
-      <img src="assets/img/do.png" alt="VPS">
-      <h2>VPS DIGITAL OCEAN</h2>
-      <div class="package-scroll">
-        <div class="package-card">
-          <h3>VPS AMD #1 55.000</h3>
-          <p>🖥️ 2 GB Ram</p>
-          <p>💾 60 GB eSSD</p>
-          <p>🌐 2 CPUs</p>
-          <p>🇸🇬 Singapore</p>
-          <p>⌛ Estimated 28-30Day</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20VPS%20Paket 1" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
-        <div class="package-card">
-          <h3>VPS AMD #2 80.000</h3>
-          <p>🖥️ 4 GB Ram</p>
-          <p>💾 80 GB eSSD</p>
-          <p>🌐 2 CPUs</p>
-          <p>🇸🇬 Singapore</p>
-          <p>⌛ Estimated 28-30Day</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20VPS%20Paket 2" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
-        <div class="package-card">
-          <h3>VPS AMD #3 95.000</h3>
-          <p>🖥️ 8 GB Ram</p>
-          <p>💾 100 GB eSSD</p>
-          <p>🌐 2 CPUs</p>
-          <p>🇸🇬 Singapore</p>
-          <p>⌛ Estimated 28-30Day</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20VPS%20Paket 3" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
-        <div class="package-card">
-          <h3>VPS AMD #4 105.000</h3>
-          <p>🖥️ 8 GB Ram</p>
-          <p>💾 160 GB eSSD</p>
-          <p>🌐 4 CPUs</p>
-          <p>🇸🇬 Singapore</p>
-          <p>⌛ Estimated 28-30Day</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20VPS%20Paket 4" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
+      <a href="https://wa.me/6283104049339?text=Halo%20Admin%20DEWA,%20saya%20ingin%20masuk%20guild"
+         class="wa-btn" target="_blank">Admin (DEWA)</a>
+      <a href="https://wa.me/6285640813673?text=Halo%20Admin%20BARAA,%20saya%20ingin%20info%20lebih%20lanjut"
+         class="wa-btn" target="_blank">Admin (BARAA)</a>
+    </div>
+
+    <div class="structure-section">
+      <h2 class="neon-glow">📜 STRUKTUR DALAM GUILD 📜</h2>
+      <ul>
+        <li>👑 Kapten Guild: <b>DEWA</b></li>
+        <li>🛡️ Wakil Guild: <b>ARAi</b></li>
+        <li>💬 Officer 1: <b>IQBAL</b></li>
+        <li>💬 Officer 2: <b>ROBI</b></li>
+        <li>😈 Admin Guild: <b>BARAA</b></li>
+        <li>⚙️ Divisi Turnamen: <b>ARAI DEWA BARA</b></li>
+        <li>🎮 Jumlah Member: <b class="member-glow">34 Anggota</b></li>
+      </ul>
+<div class="top-point-section">
+  <h2 class="neon-glow">🏆 TOP POINT GUILD WARS 🏆</h2>
+  <ol class="top-point-list">
+    <li class="gold">
+      <div class="player-card">
+        <img src="assets/img/febri.jpg" alt="M4X DEWA">
+        <span>🥇 M4X Chucky — 205 Poin</span>
       </div>
-    </section>
-
-    <!-- RDP -->
-    <section class="product" id="rdp">
-      <img src="assets/img/rdpp.gif" alt="RDP">
-      <h2>REMOTE DEKSTOP</h2>
-      <div class="package-scroll">
-        <div class="package-card">
-          <h3>🖥️ RDP #1 35.000</h3>
-          <p>🖥️ 2 GB Ram</p>
-          <p>💾 30 GB eSSD</p>
-          <p>🌐 2 Core</p>
-          <p>🇸🇬 Singapore</p>
-          <p>⌛ Estimated 1 Month</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20RDP%20RDP 1" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
-        <div class="package-card">
-         <h3>🖥️ RDP #2 55.000</h3>
-          <p>🖥️ 4 GB Ram</p>
-          <p>💾 30 GB eSSD</p>
-          <p>🌐 2 Core</p>
-          <p>🇸🇬 Singapore</p>
-          <p>⌛ Estimated 1 Month</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20RDP%20RDP 2" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
+    </li>
+    <li class="silver">
+      <div class="player-card">
+        <img src="assets/img/balz.jpg" alt="M4X ARAI">
+        <span>🥈 M4X Balz — 174 Poin</span>
       </div>
-    </section>
-
-    <!-- Game Hosting -->
-    <section class="product" id="game">
-      <img src="assets/img/samp.png" alt="Game Hosting">
-      <h2>SA-MP RYZEN</h2>
-      <div class="package-scroll">
-        <div class="package-card">
-          <h3>📦 PACKET #1 45.000</h3>
-          <p>👤 50 Slot Player</p>
-          <p>🖥️ Automatic Backup</p>
-          <p>📅 Aktif 30 Hari</p>
-          <p>💾 Unlimited Memory & Disk</p>
-          <p>🌐 DDos Protection Gcore</p>
-          <p>📁 Akses Phpmyadmin</p>
-          <p>📣 Support .Dll and .so</p>
-          <p>FREE PORT VOICE SERVER</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20Mini%20PACKET 1" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
-        <div class="package-card">
-          <h3>📦 PACKET #2 65.000</h3>
-          <p>👤 70 Slot Player</p>
-          <p>🖥️ Automatic Backup</p>
-          <p>📅 Aktif 30 Hari</p>
-          <p>💾 Unlimited Memory & Disk</p>
-          <p>🌐 DDos Protection Gcore</p>
-          <p>📁 Akses Phpmyadmin</p>
-          <p>📣 Support .Dll and .so</p>
-          <p>FREE PORT VOICE SERVER</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20Pro%20PACKET 2" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
-        <div class="package-card">
-           <h3>📦 PACKET #3 85.000</h3>
-          <p>👤 100 Slot Player</p>
-          <p>🖥️ Automatic Backup</p>
-          <p>📅 Aktif 30 Hari</p>
-          <p>💾 Unlimited Memory & Disk</p>
-          <p>🌐 DDos Protection Gcore</p>
-          <p>📁 Akses Phpmyadmin</p>
-          <p>📣 Support .Dll and .so</p>
-          <p>FREE PORT VOICE SERVER</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20Ultimate%20PACKET 3" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
-        <div class="package-card">
-          <div class= "discount-badge">🔥Potongan 10%</div>
-           <h3>📦 PACKET #4 100.000</h3>
-          <p>👤 200 Slot Player</p>
-          <p>🖥️ Automatic Backup</p>
-          <p>📅 Aktif 30 Hari</p>
-          <p>💾 Unlimited Memory & Disk</p>
-          <p>🌐 DDos Protection Gcore</p>
-          <p>📁 Akses Phpmyadmin</p>
-          <p>📣 Support .Dll and .so</p>
-          <p>🤖 Free Bot status</p>
-          <p>FREE PORT VOICE SERVER</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20Ultimate%20PACKET 4" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
-        <div class="package-card">
-           <h3>🤖 BOT HOSTING 15.000</h3>
-          <p>🇸🇬 Region Singapore</p>
-          <p>🖥️ 2GB Ram</p>
-          <p>💾 200% Cpu</p>
-          <p>🌐 Node Js & Python</p>
-          <a href="https://wa.me/6285640813673?text=Halo%20Admin,%20saya%20ingin%20pesan%20Ultimate%20BOT HOSTING" class="wa-btn" target="_blank">Pesan Sekarang</a>
-        </div>
-        <!-- Tambahan produk lainnya -->
+    </li>
+    <li class="bronze">
+      <div class="player-card">
+        <img src="assets/img/dewa.jpg" alt="M4X BARAA">
+        <span>🥉 M4X Dewa — 137 Poin</span>
       </div>
-    </section>
-  </div>
-
+    </li>
+  </ol>
+</div>
+      
+    </div>
+  </section>
 
   <footer>
     <div class="socials">
-      <a href="https://www.instagram.com/officialwsrp" target="_blank"><img src="assets/img/ig.png" alt="Instagram"></a>
-      <a href="https://www.youtube.com/@anomalixxz" target="_blank"><img src="assets/img/yt.png" alt="YouTube"></a>
-      <a href="https://www.tiktok.com/@anxcloud" target="_blank"><img src="assets/img/tt.png" alt="TikTok"></a>
-      <a href="https://discord.gg/xZDF6j4xcE" target="_blank"><img src="assets/img/dc.png" alt="Discord"></a>
+      <a href="https://www.instagram.com/baraqyu_" target="_blank"><img src="assets/img/ig.png" alt="Instagram"></a>
+      <a href="https://www.youtube.com/@rrrbarqyu" target="_blank"><img src="assets/img/yt.png" alt="YouTube"></a>
+      <a href="https://www.tiktok.com/@m4ximalid" target="_blank"><img src="assets/img/tt.png" alt="TikTok"></a>
+      <a href="https://discord.gg" target="_blank"><img src="assets/img/dc.png" alt="Discord"></a>
     </div>
+
     <div class="berita-terbaru">
       <h3>Peringatan!</h3>
       <ul>
-        <li><a href="#">Hosting SA-MP menggunakan AMD Ryzen 9 9750x! Harga murah berkualitas🔥🔥!</a></li>
+        <li><a href="#">Selama bergabung dengan komunitas, harap patuhi peraturan yang tersedia dan baca kembali dengan teliti.</a></li>
       </ul>
     </div>
-    <p>&copy;2025 AnX ClouD Store. All rights reserved.</p>
+
+    <div class="copyright">
+      <b>© M4X FAMILY - Created by BARA 2025</b>
+    </div>
   </footer>
 
-  <!-- Countdown Timer Script -->
   <script>
-    const countdownDate = new Date("June 15, 2025 23:59:59").getTime();
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-      if (distance < 0) {
-        clearInterval(timer);
-        document.getElementById("countdown").innerHTML = "FLASH SALE TELAH BERAKHIR!";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("countdown").innerHTML = 
-        `${days}h ${hours}j ${minutes}m ${seconds}d`;
-    }, 1000);
+    setTimeout(() => {
+      document.getElementById('intro-screen').classList.add('hidden');
+    }, 4000);
   </script>
 </body>
 </html>
-
