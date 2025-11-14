@@ -6,13 +6,78 @@
   <title>M4X FAMILY FREE FIRE</title>
 
   <style>
-    * { box-sizing: border-box; }
+    { box-sizing: border-box; }
     body {
       margin: 0; padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: black; color: white;
       overflow-x: hidden;
     }
+
+{ box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: black; color: white;
+      overflow-x: hidden;
+    }
+
+    .wa-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: #25D366;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  box-shadow: 0 0 15px #25D366;
+  transition: all 0.3s ease-in-out;
+}
+
+.wa-btn:hover {
+  transform: scale(1.1);
+  background: #1ebe5d;
+  box-shadow: 0 0 25px #25D366, 0 0 50px #1ebe5d;
+}
+
+    /* TOP GUILD WARS IMAGE CUSTOMIZATION */
+    .player-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #00ffff;
+      box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+    }
+
+    /* Admin Upload Section */
+    .admin-panel {
+      background: rgba(255,255,255,0.08);
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,255,255,0.4);
+    }
+    .admin-panel input {
+      margin: 10px 0;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      width: 90%;
+    }
+    .admin-panel button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #00ffff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
 
     /* === ANIMASI INTRO === */
     #intro-screen {
@@ -327,6 +392,48 @@
 </head>
 
 <body>
+
+<script>
+  // ====== SISTEM PASSWORD ADMIN PANEL ======
+  const adminPassword = "baraqyu"; // ← Ganti password di sini
+
+  function showAdminPanel() {
+    const input = prompt("Masukkan password admin:");
+
+    if (input === adminPassword) {
+      document.querySelector('.admin-panel').style.display = 'block';
+      alert("Admin panel aktif!");
+    } else if (input === null) {
+      return;
+    } else {
+      alert("Password salah!");
+    }
+  }
+
+  // Sembunyikan panel di awal
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.admin-panel').style.display = 'none';
+  });
+</script>
+
+<!-- TOMBOL RAHASIA PEMBUKA PANEL -->
+<button onclick="showAdminPanel()" 
+style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px 12px;
+  background: rgba(0,255,0,0.2);
+  color: #0f0;
+  border: 1px solid #0f0;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 99999;
+">
+Admin Login
+</button>
+
   <!-- INTRO -->
   <div id="intro-screen">
     <img id="intro-logo" src="assets/img/logom4x.png" alt="M4X Logo">
@@ -364,67 +471,111 @@
   <section class="rules-structure-container">
     <div class="rules-section">
       <h2 class="neon-glow">❗ RULES KOMUNITAS ❗</h2>
-      <h3>IN GAME</h3>
-      <p>🔹 Wajib on mic</p>
-      <p>🔹 Toxic sewajarnya</p>
-      <p>🔹 Tidak menggunakan program ilegal</p>
-      <p>🔹 Kerja sama Team nomor 1 (satu)</p>
-      <p>🔹 Berikan alasan jika di invite tidak masuk</p>
-      <p>🔹 Berikan alasan jika tidak bisa on mic</p>
-      <p>🔹 Tidak baper sesama member</p>
-      <p>🔹 Berusia 17 tahun +</p>
+ <h3>  RULES IN GAME 🎮</h3>
 
-      <h3>IN GROUP</h3>
-      <p>🔹 Sopan kepada sesama</p>
-      <p>🔹 Wajib CN (CHANGE NAME)</p>
-      <p>🔹 Wajib masuk grup WhatsApp</p>
-      <p>🔹 Loyal tidak kutu loncat</p>
-      <p>🔹 Tidak egois sesama</p>
-      <p>🔹 Berusia 17 tahun +</p>
-      <p>🔹 Tidak menebar Link (porno/fishing/atau link lainnya)</p>
+<p>🔹 Wajib on mic</p>
+
+<p>🔹 Toxic sewajarnya</p>
+
+<p>🔹 Tidak menggunakan program ilegal </p>
+
+<p>🔹 Kerja sama tim nomer 1 / tidak egois</p>
+
+<p>🔹 Berikan alasan jika di invite tidak masuk</p>
+
+<p>🔹 Berikan alasan jika tidak bisa on mic</p>
+
+<p>🔹 Menjaga nama baik guild</p>
+
+<p>🔹  Usia minimal 17 tahun utk cowok / usia minimal 15 tahun utk cewek</p>
+
+<p>🔹  Mabar havefun</p>
+
+<h3>RULES IN GROUP📲</h3>
+
+<p>🔹 Sopan saling menghargai</p>
+
+<p>🔹 Dilarang spam / telfon / vc grup</p>
+
+<p>🔹 Wajib izin / kasih keterangan jika ada halangan tidak bisa login / saat ada event guild berlangsung </p>
+
+<p>🔹 Loyal no kutu loncat </p>
+
+<p>🔹 Anggota harus hadir saat dipanggil dalam permainan dan berikan alasan jika ada halangan</p>
+
+<p>🔹 Dilarang drama</p>
+
+<p>🔹 Tidak menebar link ( porno / atau link ilegal lainya )</p>
+      
+      
 <!-- Bagian RULES, ganti seluruh isi tombol WA lama dengan versi ini -->
-<a href="https://wa.me/6283104049339?text=Halo%20Admin%20DEWA,%20saya%20ingin%20masuk%20guild"
+<a href="https://wa.me/6282130756983?text=Halo%20Admin%20DEWA,%20saya%20ingin%20masuk%20guild"
    class="wa-btn" target="_blank">Admin (DEWA)</a>
 <a href="https://wa.me/6285640813673?text=Halo%20Admin%20BARAA,%20saya%20ingin%20info%20lebih%20lanjut"
    class="wa-btn" target="_blank">Admin (BARAA)</a>
-<a href="https://chat.whatsapp.com/XXXXXXXXXXXXXXX"
+<a href="https://chat.whatsapp.com/JV3bnFYzJ1UAe5OpBzo2v7"
    class="wa-btn" target="_blank">Gabung Grup WhatsApp</a>
     </div>
 
     <div class="structure-section">
       <h2 class="neon-glow">📜 STRUKTUR DALAM GUILD 📜</h2>
       <ul>
-        <li>👑 Kapten Guild: <b>DEWA</b></li>
-        <li>🛡️ Wakil Guild: <b>ARAi</b></li>
-        <li>💬 Officer 1: <b>IQBAL</b></li>
-        <li>💬 Officer 2: <b>ROBI</b></li>
-        <li>😈 Admin Guild: <b>BARAA</b></li>
-        <li>⚙️ Divisi Turnamen: <b>ARAI DEWA BARA</b></li>
+        <li>👑 Kapten Guild: <b>M4X  fckdew' / DEWA</b></li>
+        <li>🛡️ Wakil Guild: <b>M4X  ARAI'ZEN / ARAi</b></li>
+        <li>💬 Officer 1: <b>M4X  Balz / IQBAL</b></li>
+        <li>💬 Officer 2: <b>M4X  BIBOY / ROBI</b></li>
+        <li>😈 Admin Guild: <b>M4X  BARAAQYU / BARA</b></li>
         <li>🎮 Jumlah Member: <b class="member-glow">34 Anggota</b></li>
       </ul>
-<div class="top-point-section">
-  <h2 class="neon-glow">🏆 TOP POINT GUILD WARS WEEK 4 🏆</h2>
+
+  </style></head>
+<body>  <!-- ADMIN PANEL FOR IMAGE CUSTOM -->  <div class="admin-panel">
+    <h3>🔧 PANEL UNTUK MENGUBAH PROFIL GUILD WAR</h3>
+    <p>Upload URL foto baru lalu klik simpan. Hanya merubah foto, bagian point BARA handle melalui script</p><input type="text" id="img1" placeholder="URL Foto Juara 1" />
+<input type="text" id="img2" placeholder="URL Foto Juara 2" />
+<input type="text" id="img3" placeholder="URL Foto Juara 3" />
+
+<button onclick="updateImages()">SIMPAN</button>
+
+  </div>  <script>
+    function updateImages() {
+      const img1 = document.getElementById('img1').value;
+      const img2 = document.getElementById('img2').value;
+      const img3 = document.getElementById('img3').value;
+
+      if (img1) document.getElementById('top1').src = img1;
+      if (img2) document.getElementById('top2').src = img2;
+      if (img3) document.getElementById('top3').src = img3;
+
+      alert('Foto berhasil diperbarui!');
+    }
+    
+    
+  </script>  <!-- TOP GUILD WARS SECTION -->  <div class="top-point-section">
+    <h2 class="neon-glow">🏆 TOP POINT GUILD WARS 🏆</h2>
+  <h3 style="color:#00ffff; text-shadow:0 0 10px #00ffff; margin-top:-10px;">Week 4 — Season 9</h3>
   <ol class="top-point-list">
     <li class="gold">
-      <div class="player-card">
-        <img src="assets/img/febri.jpg" alt="M4X DEWA">
-        <span>🥇 M4X Chucky — 205 Poin</span>
-      </div>
-    </li>
-    <li class="silver">
-      <div class="player-card">
-        <img src="assets/img/balz.jpg" alt="M4X ARAI">
-        <span>🥈 M4X Balz — 174 Poin</span>
-      </div>
-    </li>
-    <li class="bronze">
-      <div class="player-card">
-        <img src="assets/img/dewa.jpg" alt="M4X BARAA">
-        <span>🥉 M4X Dewa — 137 Poin</span>
-      </div>
-    </li>
-  </ol>
-</div>
+        <div class="player-card">
+          <img id="top1" src="assets/img/febri.jpg" alt="Top 1">
+          <span>🥇 M4X Chucky — 205 Poin</span>
+        </div>
+      </li>
+      <li class="silver">
+        <div class="player-card">
+          <img id="top2" src="assets/img/balz.jpg" alt="Top 2">
+          <span>🥈 M4X Balz — 174 Poin</span>
+        </div>
+      </li>
+      <li class="bronze">
+        <div class="player-card">
+          <img id="top3" src="assets/img/balz.jpg" alt="Top 3">
+          <span>🥉 M4X Dewa — 137 Poin</span>
+        </div>
+      </li>
+    </ol>
+  </div></body>
+</html>
       
     </div>
   </section>
